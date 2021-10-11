@@ -1,8 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost&display=swap');
+
+* {
+  --primary-color: rgb(77, 165, 124);
+  --secondary-color: rgb(213, 172, 98);
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 5vw;
+  font-family: 'DM Serif Display', serif;
+}
+
+h1 {
+  letter-spacing: 1.5px;
 }
 
 a {
-  color: #00B7FF;
+  text-decoration: none;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+a.button, input[type="submit"] {
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--primary-color);
+  padding: 10px;
+  font-size: 1rem;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+table {
+  width: 70vw;
+}
+
+th {
+  border-bottom: 2px solid var(--secondary-color);
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding: 7px;
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+  background: #eee;
+}
+
+form p {
+  padding: 2.5px;
+}
+
+#title,
+#author,
+#genre,
+#year {
+  position: absolute;
+  left: 20vw;
+  padding: 7px;
+  width: 25vw;
+  border-radius: 1px;
+  border-left: 2px solid grey;
+  border-top: 2px solid grey;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+#cancel,
+input[type="submit"] {
+  position: relative;
+  top: 1vh;
+  left: 15vw;
 }
