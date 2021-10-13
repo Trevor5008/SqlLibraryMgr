@@ -34,5 +34,6 @@ from an additional terminal:
 ```
 npx sequelize-cli db:seed:all
 ```
-* At this point, you should be able to refresh the page <kbd>Control Shift R</kbd> on Windows, and see the initial collection.
-* Now you should see the following in your browser: ![image](./public/images/landing_image.png)
+* At this point, you should be able to refresh the page <kbd>Ctrl+Shift+R</kbd> on Windows, and see the initial collection.
+* Now you should see the following in your browser: 
+![image](./public/images/landing_image.png)
