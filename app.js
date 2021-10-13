@@ -25,20 +25,22 @@ app.use('/books', booksRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
+  // creates new error and sets status and message
   next(createError(404, 'That page does not exist'));
 });
 
 // error handler
 app.use((err, req, res, next) => {
   // set locals, only providing error in development
-  res.locals.message = err.message || 'Server error';
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  res.locals.message = err.message;
+  // log error status and message
+  console.log(err.status, err.message)
   // render the matching error page
-  res.status(err.status || 500);
   if (err.status === 404) {
-    res.render('page-not-found', { err })
+    res.render('page-not-found', { err });
   } else {
+    err.message = err.message || 'Oops! It looks like something went wrong on the server.';
     res.render('error', { err });
   }
 });

@@ -77,3 +77,23 @@ input[type="submit"] {
   top: 1vh;
   left: 15vw;
 }
+
+li {
+  list-style: none;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  width: 70vw;
+}
+
+input[type='search'] {
+  padding: 4px;
+  width: 12vw;
+}
+
+#search {
+  position: static;
+  transform: scale(.65);
+}
