@@ -97,3 +97,25 @@ input[type='search'] {
   position: static;
   transform: scale(.65);
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 5vh;
+  right: 10vw;
+}
+
+.pages {
+  border: 1px solid var(--primary-color);
+  border-radius: 2px;
+  padding: 5px;
+  margin-right: 5px;
+  width: 15px;
+}
+
+.pages:hover,
+.active {
+  background-color: var(--primary-color);
+  color: white;
+}

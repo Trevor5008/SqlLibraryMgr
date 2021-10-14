@@ -17,18 +17,46 @@ const asyncHandler = (cb) => {
   };
 };
 
-const searchFunction = () => {
-  
-}
-
-/* GET books listing */
+/* GET all books listing */
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const books = await Book.findAll({
-      order: [["createdAt", "DESC"]],
+    const { count, rows } = await Book.findAndCountAll({
+      order: [['createdAt', 'DESC']],
+      limit: 10
     });
-    res.render("index", { books, title: "Books" });
+
+    const pages = Math.ceil(count/10);
+    res.render("index", { 
+      books: rows, 
+      title: "Books",
+      pages,
+      activePage: 1 
+    });
+  })
+);
+
+/* Get route for individual pages */
+router.get(
+  "/page_:num",
+  asyncHandler(async (req, res) => {
+    const limit = 10;
+    const offset = req.params.num > 1 
+      ? (req.params.num - 1) * limit : 0;
+    const activePage = req.params.num;
+    const { count, rows } = await Book.findAndCountAll({
+      order: [['createdAt', 'DESC']],
+      limit,
+      offset
+    });
+    const pages = Math.ceil(count/10);
+    console.log(activePage)
+    res.render("index", { 
+      books: rows, 
+      title: "Books",
+      pages,
+      activePage
+    });
   })
 );
 
@@ -73,7 +101,7 @@ router.get('/search', async (req, res, next) => {
   let { term } = req.query
   term = term.toLowerCase();
   if (term) {
-  const books = await Book.findAll({
+  const { count, rows } = await Book.findAndCountAll({
     order: [["createdAt", "DESC"]],
     where: {
       [Op.or]: [
@@ -91,12 +119,19 @@ router.get('/search', async (req, res, next) => {
           },
         }
       ]
-    }
+    },
+    limit: 10
   });
-  res.render("index", { books, title: "Books" });
-} else {
-  res.redirect('/books');
-}
+  const pages = Math.ceil(count/10);
+  res.render("index", { 
+    books: rows, 
+    title: "Books",
+    pages,
+    activePage: 1
+   });
+  } else {
+    res.redirect('/books');
+  }
 })
 
 /* Edit book info */
