@@ -17,6 +17,7 @@ CRUD operations are controlled through a Node.js and Express backend.
 
 * Users can perform all CRUD operations, along with a case-insensitive search 
 for books based on either author, title, genre, or year (partial matches recoginized).
+* Pagination: results are displayed in groups of 10 per page, with navigable page buttons in the footer (active pages are highlighted)
 
 # Instructions:
 
